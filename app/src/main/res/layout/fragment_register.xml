@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!--Toolbar-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarRegister"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
 
     <!--Content-->
     <LinearLayout
@@ -10,12 +18,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--Logo-->
-        <ImageView
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <!--Name-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Icon-->
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--TextField-->
+            <EditText
+                android:id="@+id/edtName"
+                android:hint="Name :"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <!--User-->
         <LinearLayout
@@ -32,6 +56,7 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtUser"
                 android:hint="User :"
                 android:inputType="text"
                 android:layout_width="match_parent"
@@ -54,35 +79,17 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtPassword"
                 android:hint="Password :"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-        <!--Login-->
-        <Button
-            android:text="Login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!--Register-->
-        <TextView
-            android:clickable="true"
-            android:id="@+id/txtRegister"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorAccent"
-            android:textStyle="italic"
-            android:textSize="@dimen/h2"
-            android:text="New Register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
 
     </LinearLayout>
 
 
 
-</RelativeLayout>
+</LinearLayout>
