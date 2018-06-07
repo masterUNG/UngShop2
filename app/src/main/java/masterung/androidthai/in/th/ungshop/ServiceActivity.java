@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import masterung.androidthai.in.th.ungshop.fragment.ListProduceFragment;
+
 public class ServiceActivity extends AppCompatActivity {
 
     private String nameUserString;
@@ -27,6 +29,15 @@ public class ServiceActivity extends AppCompatActivity {
 
 //        Create Toolbar
         createToolbar();
+
+//        Add Fragment to Activity
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.contentServiceFragment, new ListProduceFragment())
+                    .commit();
+        }
+
 
 
     }   // Main Method
