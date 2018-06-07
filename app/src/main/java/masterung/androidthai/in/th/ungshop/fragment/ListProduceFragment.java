@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -42,10 +43,10 @@ public class ListProduceFragment extends Fragment {
 
             JSONArray jsonArray = new JSONArray(jsonString);
 
-            String[] nameStrings = new String[jsonArray.length()];
-            String[] priceStrings = new String[jsonArray.length()];
-            String[] detailStrings = new String[jsonArray.length()];
-            String[] photoStrings = new String[jsonArray.length()];
+            final String[] nameStrings = new String[jsonArray.length()];
+            final String[] priceStrings = new String[jsonArray.length()];
+            final String[] detailStrings = new String[jsonArray.length()];
+            final String[] photoStrings = new String[jsonArray.length()];
 
             for (int i=0; i<jsonArray.length(); i+=1) {
 
@@ -60,6 +61,23 @@ public class ListProduceFragment extends Fragment {
             ProduceAdapter produceAdapter = new ProduceAdapter(getActivity(),
                     nameStrings, priceStrings, detailStrings, photoStrings);
             listView.setAdapter(produceAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    getActivity()
+                            .getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.contentServiceFragment,
+                                    DetailFragment.detailInstance(nameStrings[position],
+                                            priceStrings[position], detailStrings[position],
+                                            photoStrings[position]))
+                            .addToBackStack(null)
+                            .commit();
+
+                }
+            });
 
 
 
