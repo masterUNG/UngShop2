@@ -1,5 +1,6 @@
 package masterung.androidthai.in.th.ungshop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import masterung.androidthai.in.th.ungshop.R;
+import masterung.androidthai.in.th.ungshop.ServiceActivity;
 import masterung.androidthai.in.th.ungshop.utility.GetAllData;
 import masterung.androidthai.in.th.ungshop.utility.MasterAlert;
 import masterung.androidthai.in.th.ungshop.utility.MasterConstant;
@@ -94,6 +96,12 @@ public class MainFragment extends Fragment{
                         } else if (passwordString.equals(truePasswordSting)) {
 //                            Password True
                             Toast.makeText(getActivity(), "Welcome " + nameString, Toast.LENGTH_SHORT).show();
+
+//                            Intent to ServiceActivity
+                            Intent intent = new Intent(getActivity(), ServiceActivity.class);
+                            intent.putExtra("Name", nameString);
+                            startActivity(intent);
+                            getActivity().finish();
 
                         } else {
 //                            Password False
